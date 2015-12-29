@@ -1,0 +1,13 @@
+{% if character_list.all %}
+  <ul class="characters">
+    {% for character in character_list %}
+      <li class="character-list-item">
+        <div class="character">
+          <h2>{{ character.name }}</h2>
+        <div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No characters are loaded.</p>
+{% endif %}

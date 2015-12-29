@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-# Create your views here.
+from .models import Character
 
 def index(request):
-    return HttpResponse('Hello, world!')
+    character_list = Character.objects.order_by('name')
+    context = {'character_list': character_list, 'test': True}
+    return render(request, 'game_tracker/index.html', context)
