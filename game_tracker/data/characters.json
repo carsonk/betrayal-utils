@@ -1,0 +1,97 @@
+[
+  {
+    "color": "purple",
+    "characters": [
+      {
+        "name": "Jenny LeClerc",
+        "speed": 4,
+        "might": 4,
+        "sanity": 4,
+        "knowledge": 3
+      },
+      {
+        "name": "Heather Granville",
+        "speed": 4,
+        "might": 3,
+        "sanity": 3,
+        "knowledge": 5
+      }
+    ]
+  },
+  {
+    "color": "red",
+    "characters": [
+      {
+        "name": "Ox Bellows",
+        "speed": 4,
+        "might": 5,
+        "sanity": 3,
+        "knowledge": 3
+      },
+      {
+        "name": "Darwin \"Flash\" Williams",
+        "speed": 6,
+        "might": 3,
+        "sanity": 3,
+        "knowledge": 3
+      }
+    ]
+  },
+  {
+    "color": "green",
+    "characters": [
+      {
+        "name": "Brandon Jaspers",
+        "speed": 4,
+        "might": 4,
+        "sanity": 4,
+        "knowledge": 3
+      },
+      {
+        "name": "Peter Akimoto",
+        "speed": 4,
+        "might": 3,
+        "sanity": 4,
+        "knowledge": 4
+      }
+    ]
+  },
+  {
+    "color": "blue",
+    "characters": [
+      {
+        "name": "Vivian Lopez",
+        "speed": 4,
+        "might": 2,
+        "sanity": 4,
+        "knowledge": 5
+      },
+      {
+        "name": "Madame Zostra",
+        "speed": 3,
+        "might": 4,
+        "sanity": 4,
+        "knowledge": 4
+      }
+    ]
+  },
+  {
+    "color": "yellow",
+    "characters": [
+      {
+        "name": "Zoe Ingstrom",
+        "speed": 4,
+        "might": 3,
+        "sanity": 5,
+        "knowledge": 3
+      },
+      {
+        "name": "Missy Dubourde",
+        "speed": 5,
+        "might": 3,
+        "sanity": 3,
+        "knowledge": 4
+      }
+    ]
+  }
+]
