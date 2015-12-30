@@ -18,5 +18,10 @@ class Character(models.Model):
     sanity_index = models.IntegerField(default=0)
     knowledge_index = models.IntegerField(default=0)
 
+    speed = models.IntegerField(default=0)
+    might = models.IntegerField(default=0)
+    sanity = models.IntegerField(default=0)
+    knowledge = models.IntegerField(default=0)
+
     def __str__(self):
         return self.name

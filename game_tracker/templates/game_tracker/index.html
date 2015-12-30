@@ -7,34 +7,70 @@
 
   {% if character_list.all %}
       {% for character in character_list %}
-        {% if forloop.counter0|divisibleby:3 %}
+        {% if forloop.counter0|divisibleby:2 %}
           {% if forloop.counter0 > 0 %}
             </div>
           {% endif %}
 
           <div class="row">
         {% endif %}
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="panel panel-default character">
             <div class="panel-heading">{{ character.name }}</div>
             <div class="panel-body">
               <div class="media">
-                <div class="media-left">
+                <div class="media-left media-middle">
                   <a href="#">
                     {% with 'game_tracker/images/'|add:character.image as images_path %}
                       <img class="media-object" src="{% static images_path %}"
-                      alt="{{ character.name }}">
+                        alt="{{ character.name }}" style="width: 100px; height: 100px;" />
                     {% endwith %}
                   </a>
                 </div>
                 <div class="media-body">
-                  ...
+                  <div class="row">
+                    <div class="col-md-6" style="padding-left: 25px;">
+                      <div style="font-weight: bold;">Speed</div>
+                      <input class="attr-slider" id="speed_{{ character.id }}" type="text"
+                        data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
+                        data-slider-ticks-snap-bounds="1"
+                        data-slider-ticks-labels='{{ character.speed_slide }}'
+                        data-slider-value='{{ character.speed_index }}' />
+
+                      <div style="font-weight: bold;">Might</div>
+                      <input class="attr-slider" id="might_{{ character.id }}" type="text"
+                        data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
+                        data-slider-ticks-snap-bounds="1"
+                        data-slider-ticks-labels='{{ character.might_slide }}'
+                        data-slider-value='{{ character.might_index }}' />
+                    </div>
+                    <div class="col-md-6">
+                      <div style="font-weight: bold;">Sanity</div>
+                      <input class="attr-slider" id="sanity_{{ character.id }}" type="text"
+                        data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
+                        data-slider-ticks-snap-bounds="1"
+                        data-slider-ticks-labels='{{ character.sanity_slide }}'
+                        data-slider-value='{{ character.sanity_index }}' />
+
+                      <div style="font-weight: bold;">Knowledge</div>
+                      <input class="attr-slider" id="knowl_{{ character.id }}" type="text"
+                        data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
+                        data-slider-ticks-snap-bounds="1"
+                        data-slider-ticks-labels='{{ character.knowledge_slide }}'
+                        data-slider-value='{{ character.knowledge_index }}' />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       {% endfor %}
+
+      <script type="text/javascript">
+        $(".attr-slider").slider({});
+      </script>
+
   {% else %}
     <div class="col-md-8 col-md-offset-4">No characters are loaded.</p>
   {% endif %}
