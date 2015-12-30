@@ -4,17 +4,29 @@
     "characters": [
       {
         "name": "Jenny LeClerc",
-        "speed": 4,
-        "might": 4,
-        "sanity": 4,
-        "knowledge": 3
+
+        "speed":     [0,2,3,4,4,4,5,6,8],
+        "might":     [0,3,4,4,4,4,5,6,8],
+        "sanity":    [0,1,1,2,4,4,4,5,6],
+        "knowledge": [0,2,3,3,4,4,5,6,8],
+
+        "default_speed": 4,
+        "default_might": 3,
+        "default_sanity": 5,
+        "default_knowledge": 3
       },
       {
         "name": "Heather Granville",
-        "speed": 4,
-        "might": 3,
-        "sanity": 3,
-        "knowledge": 5
+
+        "speed":     [0,3,3,4,5,6,6,7,8],
+        "might":     [0,3,3,3,4,5,6,7,8],
+        "sanity":    [0,3,3,3,4,5,6,6,6],
+        "knowledge": [0,2,3,3,4,5,6,7,8],
+
+        "default_speed": 3,
+        "default_might": 3,
+        "default_sanity": 3,
+        "default_knowledge": 5
       }
     ]
   },
@@ -23,17 +35,23 @@
     "characters": [
       {
         "name": "Ox Bellows",
-        "speed": 4,
-        "might": 5,
-        "sanity": 3,
-        "knowledge": 3
+
+        "speed":     [0,2,2],
+        "might":     [],
+        "sanity":    [],
+        "knowledge": [],
+
+        "default_speed": 3,
+        "default_might": 3,
+        "default_sanity": 3,
+        "default_knowledge": 5
       },
       {
         "name": "Darwin \"Flash\" Williams",
-        "speed": 6,
-        "might": 3,
-        "sanity": 3,
-        "knowledge": 3
+        "default_speed": 6,
+        "default_might": 3,
+        "default_sanity": 3,
+        "default_knowledge": 3
       }
     ]
   },
@@ -42,17 +60,17 @@
     "characters": [
       {
         "name": "Brandon Jaspers",
-        "speed": 4,
-        "might": 4,
-        "sanity": 4,
-        "knowledge": 3
+        "default_speed": 4,
+        "default_might": 4,
+        "default_sanity": 4,
+        "default_knowledge": 3
       },
       {
         "name": "Peter Akimoto",
-        "speed": 4,
-        "might": 3,
-        "sanity": 4,
-        "knowledge": 4
+        "default_speed": 4,
+        "default_might": 3,
+        "default_sanity": 4,
+        "default_knowledge": 4
       }
     ]
   },
@@ -61,17 +79,17 @@
     "characters": [
       {
         "name": "Vivian Lopez",
-        "speed": 4,
-        "might": 2,
-        "sanity": 4,
-        "knowledge": 5
+        "default_speed": 4,
+        "default_might": 2,
+        "default_sanity": 4,
+        "default_knowledge": 5
       },
       {
         "name": "Madame Zostra",
-        "speed": 3,
-        "might": 4,
-        "sanity": 4,
-        "knowledge": 4
+        "default_speed": 3,
+        "default_might": 4,
+        "default_sanity": 4,
+        "default_knowledge": 4
       }
     ]
   },
@@ -80,17 +98,36 @@
     "characters": [
       {
         "name": "Zoe Ingstrom",
-        "speed": 4,
-        "might": 3,
-        "sanity": 5,
-        "knowledge": 3
+        "default_speed": 4,
+        "default_might": 3,
+        "default_sanity": 5,
+        "default_knowledge": 3
       },
       {
         "name": "Missy Dubourde",
-        "speed": 5,
-        "might": 3,
-        "sanity": 3,
-        "knowledge": 4
+        "default_speed": 5,
+        "default_might": 3,
+        "default_sanity": 3,
+        "default_knowledge": 4
+      }
+    ]
+  },
+  {
+    "color": "white",
+    "characters": [
+      {
+        "name": "Professor Longfellow",
+        "default_speed": 4,
+        "default_might": 3,
+        "default_sanity": 3,
+        "default_knowledge": 5
+      },
+      {
+        "name": "Father Rhinehardt",
+        "default_speed": 3,
+        "default_might": 2,
+        "default_sanity": 6,
+        "default_knowledge": 4
       }
     ]
   }
