@@ -15,7 +15,7 @@
           <div class="row">
         {% endif %}
         <div class="col-md-6">
-          <div class="panel panel-default character">
+          <div class="panel panel-default character" data-character-id="{{ character.id }}">
             <div class="panel-heading">{{ character.name }}</div>
             <div class="panel-body">
               <div class="media">
@@ -35,14 +35,18 @@
                         data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
                         data-slider-ticks-snap-bounds="1"
                         data-slider-ticks-labels='{{ character.speed_slide }}'
-                        data-slider-value='{{ character.speed_index }}' />
+                        data-slider-value='{{ character.speed_index }}'
+                        data-type='speed'
+                        data-url="{% url 'update_attr' character.id %}" />
 
                       <div style="font-weight: bold;">Might</div>
                       <input class="attr-slider" id="might_{{ character.id }}" type="text"
                         data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
                         data-slider-ticks-snap-bounds="1"
                         data-slider-ticks-labels='{{ character.might_slide }}'
-                        data-slider-value='{{ character.might_index }}' />
+                        data-slider-value='{{ character.might_index }}'
+                        data-type='might'
+                        data-url="{% url 'update_attr' character.id %}" />
                     </div>
                     <div class="col-md-6">
                       <div style="font-weight: bold;">Sanity</div>
@@ -50,14 +54,18 @@
                         data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
                         data-slider-ticks-snap-bounds="1"
                         data-slider-ticks-labels='{{ character.sanity_slide }}'
-                        data-slider-value='{{ character.sanity_index }}' />
+                        data-slider-value='{{ character.sanity_index }}'
+                        data-type='sanity'
+                        data-url="{% url 'update_attr' character.id %}" />
 
                       <div style="font-weight: bold;">Knowledge</div>
                       <input class="attr-slider" id="knowl_{{ character.id }}" type="text"
                         data-slider-ticks="[0,1,2,3,4,5,6,7,8]"
                         data-slider-ticks-snap-bounds="1"
                         data-slider-ticks-labels='{{ character.knowledge_slide }}'
-                        data-slider-value='{{ character.knowledge_index }}' />
+                        data-slider-value='{{ character.knowledge_index }}'
+                        data-type='knowledge'
+                        data-url="{% url 'update_attr' character.id %}" />
                     </div>
                   </div>
                 </div>
@@ -68,7 +76,64 @@
       {% endfor %}
 
       <script type="text/javascript">
-        $(".attr-slider").slider({});
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie != '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                  var cookie = jQuery.trim(cookies[i]);
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+        }
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        $(document).ready(function() {
+            $(".attr-slider").slider({
+              tooltip: 'hide'
+            });
+
+            $(".attr-slider").change(function(event) {
+              changed = $(event.target);
+
+              post_url = changed.data("url");
+              type = changed.data("type");
+              new_value = changed.val()
+
+              $.post(post_url, {
+                attribute: type,
+                index: new_value
+              }, function(data) {
+                if(data.success) {
+                  // Succeeded.
+                  console.log("Update succeeded.");
+                } else if(data.error) {
+                  console.log(data.error);
+                } else {
+                  console.log("Something weird went wrong.");
+                }
+              }, "json")
+            });
+        });
       </script>
 
   {% else %}

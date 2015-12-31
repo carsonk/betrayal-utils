@@ -1,7 +1,9 @@
 import json
 
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .common import utils
 
@@ -9,6 +11,7 @@ from .models import Character
 
 import os
 
+@ensure_csrf_cookie
 def index(request):
     character_list = Character.objects.order_by('name')
 
@@ -62,6 +65,30 @@ def reset(request):
             new_char.save()
 
     return redirect('index')
+
+def update_attr(request, character_id):
+    character = get_object_or_404(Character, pk=character_id)
+
+    try:
+        attribute = request.POST['attribute']
+        new_index = request.POST['index']
+    except KeyError as e:
+        return JsonResponse({'error': "Required input not specified."})
+
+    if attribute == "speed":
+        character.speed_index = new_index
+    elif attribute == "might":
+        character.might_index = new_index
+    elif attribute == "sanity":
+        character.sanity_index = new_index
+    elif attribute == "knowledge":
+        character.knowledge_index = new_index
+    else:
+        return JsonResponse({'error': 'Invalid attribute specified.'})
+
+    character.save()
+
+    return JsonResponse({'success': True})
 
 def add(request):
     context = {}
